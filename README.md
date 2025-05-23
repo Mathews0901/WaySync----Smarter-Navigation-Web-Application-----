@@ -170,7 +170,7 @@ WaySync/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/waysync.git
+git clone https://github.com/Mathews0901/WaySync----Smarter-Navigation-Web-Application-----.git
 cd waysync
 ```
 
