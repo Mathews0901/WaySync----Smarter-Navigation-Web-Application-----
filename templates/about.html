@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About WaySync</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const sections = document.querySelectorAll('section');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      sections.forEach(section => observer.observe(section));
+    });
+  </script>
+</head>
+<body>
+
+  <div class="about-header">
+    <h1>Explore and Navigate Your World</h1>
+    <p>WaySync brings smart, interactive, and real-time navigation to your fingertips.</p>
+  </div>
+
+  <section>
+    <div class="text-block">
+      <h2>Discover new experiences</h2>
+      <p>Easily explore and organize locations, create your own trip plans, and share them with others. WaySync helps you travel smarter.</p>
+    </div>
+    <img src="{{ url_for('static', filename='images/unsplash.jpg') }}" alt="Discover" />
+  </section>
+
+  <section>
+    <img src="{{ url_for('static', filename='images/social-follow.jpg') }}" alt="Places" />
+    <div class="text-block">
+      <h2>Follow what you love</h2>
+      <p>Bookmark, follow, and receive updates on your favourite local spots and services. Stay informed and plan ahead.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="text-block">
+      <h2>Navigate with ease</h2>
+      <p>Access real-time traffic updates, alternate routes, and alerts. Never miss a turn or delay again — WaySync keeps you on track.</p>
+    </div>
+    <img src="{{ url_for('static', filename='images/istockphoto.jpg') }}" alt="Navigation" />
+  </section>
+
+  <section>
+    <img src="{{ url_for('static', filename='images/privacy.jpg') }}" alt="Privacy" />
+    <div class="text-block">
+      <h2>Control your data</h2>
+      <p>With industry-leading privacy controls, you're in charge of your data. Use incognito mode or customize your history settings anytime.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="text-block">
+      <h2>Why we map the world</h2>
+      <p>Our mission is to empower communities through precise mapping, and to make exploration easier for everyone on Earth.</p>
+    </div>
+    <img src="{{ url_for('static', filename='images/henry-perks.jpg') }}" alt="Mapping" />
+  </section>
+
+  <div class="center-btns">
+    <a href="{{ url_for('login') }}">Login</a>
+    <a href="{{ url_for('register') }}">Sign Up</a>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WaySync - Sign Up</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body.auth-page {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(145deg, #f3f4f6, #e8ecf3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      color: #333;
+    }
+
+    .auth-container {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      width: 360px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    .auth-container h2 {
+      font-size: 26px;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #0072ff, #00c6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .auth-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+      font-size: 14px;
+    }
+
+    .auth-container button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 15px;
+    }
+
+    .auth-container button:hover {
+      background: linear-gradient(to right, #0072ff, #0055cc);
+    }
+
+    .auth-container p {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .auth-container a {
+      color: #0072ff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body class="auth-page">
+  <div class="auth-container">
+    <h2>Create your WaySync Account</h2>
+    <form action="{{ url_for('signup') }}" method="POST">
+      <input type="text" placeholder="Full Name" name="name" required>
+      <input type="email" placeholder="Email" name="email" required>
+      <input type="password" placeholder="Password" name="password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+  </div>
+</body>
+</html>

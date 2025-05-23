@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WaySync – Get Started</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}" />
+</head>
+<body class="get-started-page">
+  <div class="overlay"></div>
+  <div class="intro-content">
+    <img src="{{ url_for('static', filename='images/Waysync.png') }}" alt="WaySync Logo" class="logo" />
+    <h1>Welcome to <span style="color: #00c6ff;">WaySync</span></h1>
+    <p>Your smarter way to navigate through places, challenges, and ideas.</p>
+    <a href="{{ url_for('login_page') }}" class="start-btn">Get Started</a>
+  </div>
+</body>
+</html>

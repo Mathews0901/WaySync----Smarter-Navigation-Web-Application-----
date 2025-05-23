@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WaySync Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <style>
+    body.welcome-screen {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      color: #333;
+    }
+    body.welcome-screen::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url("{{ url_for('static', filename='images/login.png') }}") no-repeat center center fixed;
+      background-size: cover;
+      filter: blur(12px);
+      z-index: 0;
+    }
+    .centered-container {
+      position: relative;
+      background: rgba(255, 255, 255, 0.92);
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      width: 360px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+      z-index: 1;
+    }
+    .logo-icon {
+      width: 70px;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 26px;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #0072ff, #00c6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .tagline {
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #666;
+    }
+    .login-form input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+      font-size: 14px;
+    }
+    .login-form button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      margin-top: 10px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: background 0.3s ease;
+    }
+    .login-form button:hover {
+      background: linear-gradient(to right, #0072ff, #0055cc);
+    }
+    .bottom-text {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #444;
+    }
+    .bottom-text a {
+      color: #0072ff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body class="welcome-screen">
+  <div class="centered-container">
+    <img src="{{ url_for('static', filename='images/Waysync.png') }}" alt="WaySync Logo" class="logo-icon" />
+    <h2>Login to WaySync</h2>
+    <p class="tagline">Your smarter way to navigate through places, challenges, and ideas.</p>
+
+    <!-- Remove method and action attributes so JS handles submit -->
+    <form id="loginForm" class="login-form">
+      <input id="loginEmail" name="email" type="email" placeholder="Enter email" required />
+      <input id="loginPassword" name="password" type="password" placeholder="Enter password" required />
+      <button type="submit">Login</button>
+    </form>
+
+    <p class="bottom-text">Don’t have an account? <a href="{{ url_for('register') }}">Sign Up</a></p>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();  // Prevent default form submit (page reload)
+
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+
+      try {
+        const res = await fetch('/login', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({email, password})
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.token) {
+          localStorage.setItem('token', data.token);
+          window.location.href = '/maps';
+        } else {
+          alert(data.msg || 'Login failed');
+        }
+      } catch (error) {
+        alert('Network error: ' + error.message);
+      }
+    });
+  </script>
+</body>
+</html>

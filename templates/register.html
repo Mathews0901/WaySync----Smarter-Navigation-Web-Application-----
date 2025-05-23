@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WaySync – Sign Up</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+  <style>
+    body.light-mode {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url("../static/images/login.png") no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      color: #333;
+    }
+
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(8px);
+      z-index: 0;
+    }
+
+    .auth-container {
+      position: relative;
+      background: #ffffffdd;
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      width: 360px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+
+    .auth-container img {
+      width: 70px;
+      margin-bottom: 10px;
+    }
+
+    .auth-container h2 {
+      font-size: 26px;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #0072ff, #00c6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    form input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+    }
+
+    form label {
+      color: #555;
+      font-size: 14px;
+    }
+
+    form button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background: linear-gradient(to right, #0072ff, #0055cc);
+    }
+
+    p {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #444;
+    }
+
+    p a {
+      color: #0072ff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body class="light-mode">
+  <!-- 🌫️ Background overlay for blur effect -->
+  <div class="overlay"></div>
+
+  <div class="auth-container">
+    <img src="{{ url_for('static', filename='images/Waysync.png') }}" alt="WaySync Logo" />
+    <h2>Create your WaySync Account</h2>
+    <form id="registerForm">
+      <input id="registerUsername" type="text" placeholder="Full Name" required />
+      <input id="registerEmail" type="email" placeholder="Email address" required />
+      <input id="registerPassword" type="password" placeholder="Password" required />
+
+      <div style="text-align: left; font-size: 14px; margin-top: 10px; margin-bottom: 15px; color: #666;">
+        <input type="checkbox" id="terms" required />
+        <label for="terms">I accept the terms and policy</label>
+      </div>
+
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+  </div>
+</body>
+</html>
