@@ -188,7 +188,7 @@ GOOGLE_MAPS_API_KEY=your_api_key (optional)
 
 ### 4. Run the Application
 ```bash
-python app.py
+python3 app.py
 ```
 Visit: [http://localhost:5000](http://localhost:5000)
 
@@ -196,7 +196,6 @@ Visit: [http://localhost:5000](http://localhost:5000)
 
 ## 🧠 Use Cases
 
-- 🎓 College Portals for Student Progress & Badging
 - 🏙️ Smart Cities for Center-Based Reporting
 - 🧰 Admin Panels with XP/Analytics/Badge Mechanics
 
